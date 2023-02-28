@@ -1,0 +1,5 @@
+*pycache*
+log/
+*.log
+*.json
+*.cpython
