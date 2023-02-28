@@ -5,12 +5,13 @@ from airflow import DAG
 import datetime
 
 with DAG(
-    dag_id="pokemons",
+    dag_id="sync_pokemons",
     start_date=datetime.datetime(2023, 2, 2),
     schedule_interval="@once",
     catchup=False,
 ) as dag:
     pokemons_url = get_pokemons_urls()
-    pokemons_details = get_pokemons_details.expand(pokemon_url=pokemons_url)
-
+    pokemons_details = get_pokemons_details(pokemons_url=pokemons_url)
+    # Transformar dados
+    # Salvar no banco
     pokemons_url >> pokemons_details
